@@ -174,18 +174,18 @@ input[type="range"] {
   margin-left: 5px;
 }
 
-.alert {
+/* .alert {
   padding: 20px;
   margin-bottom: 10px;
   border: 1px #696969;
   border-radius: 15px;
-}
+} */
 
 .error {
   background-color: #ffcccc;
 }
 
-.notification-container {
+/* .notification-container {
   position: fixed;
   bottom: 0;
   left: 50%;
@@ -193,10 +193,10 @@ input[type="range"] {
   width: 100%;
   max-height: 80px;
   overflow: hidden;
-}
+} */
 
 .notification {
-  display: flex; /* Use flexbox */
+  display: flex;
   align-items: center;
   background-color: #fef7e9;
   border: 1px solid #ef9300;
@@ -207,16 +207,34 @@ input[type="range"] {
 }
 
 .notification .material-symbols-outlined {
-  margin-right: 10px; /* Add margin between icon and text */
+  margin-right: 10px;
   color: #ef9300;
-}
-
-.notification-message {
-  flex-grow: 1; /* Allow the message to take up remaining space */
 }
 
 .close-button {
   margin-left: 30px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 20px;
+  color: #696969;
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-radius: 15px;
+  font-size: 16px !important;
+  margin-top: 16px;
+}
+
+.alert-message {
+  color: black;
+}
+
+.n-close-button {
+  margin-left: 50px;
   cursor: pointer;
   border: none;
   background: none;

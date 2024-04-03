@@ -187,7 +187,7 @@ simulateTime();
 function displayTemperatureAlert() {
   // Create the alert element
   const alertDiv = document.createElement("div");
-  alertDiv.classList.add("notification");
+  alertDiv.classList.add("alert");
   alertDiv.style.backgroundColor = "#FCEDEA";
   alertDiv.style.border = "1px solid #EB5757";
 
@@ -196,10 +196,11 @@ function displayTemperatureAlert() {
   icon.classList.add("material-symbols-outlined");
   icon.textContent = "error_outline";
   icon.style.color = "#EB5757";
+  icon.style.marginRight = "10px";
 
   // Create message element
   const messageDiv = document.createElement("div");
-  messageDiv.classList.add("notification-message");
+  messageDiv.classList.add("alert-message");
   messageDiv.textContent = "Temperature exceeded predefined thresholds";
 
   // Create close button
@@ -215,6 +216,16 @@ function displayTemperatureAlert() {
   // Append the alert to the alerts container
   document.getElementById("alerts-container").appendChild(alertDiv);
 
+  closeButton.addEventListener("click", () => {
+    alertDiv.remove();
+  });
+
+  // Set a timeout to remove the alert after 5 seconds
+  setTimeout(() => {
+    alertDiv.remove();
+    temperatureAlertDisplayed = false;
+  }, 4000);
+
   // Update the flags
   temperatureAlertDisplayed = true;
   temperatureAlertElement = alertDiv;
@@ -229,13 +240,6 @@ function removeTemperatureAlert() {
   temperatureAlertDisplayed = false;
   temperatureAlertElement = null;
 }
-// Function to display alerts
-// function displayAlert(message, type) {
-//   const alertDiv = document.createElement("div");
-//   alertDiv.classList.add("alert", type);
-//   alertDiv.textContent = message;
-//   document.getElementById("alerts-container").appendChild(alertDiv);
-// }
 
 // Global variable to store the reference to the current notification
 let currentNotification = null;
@@ -262,7 +266,7 @@ function displayNotification(message, status) {
 
   // Create close button
   const closeButton = document.createElement("button");
-  closeButton.classList.add("close-button");
+  closeButton.classList.add("n-close-button");
   closeButton.innerHTML = "&times;";
 
   // Append elements to notification container
@@ -272,6 +276,11 @@ function displayNotification(message, status) {
 
   // Append notification to alerts container
   document.getElementById("alerts-container").appendChild(notificationDiv);
+
+  // Hide notification after 5 seconds
+  setTimeout(() => {
+    notificationDiv.remove();
+  }, 4000);
 
   // Set the current notification to the new notification
   currentNotification = notificationDiv;
