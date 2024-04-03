@@ -237,18 +237,15 @@ main .insights {
   main .insights {
     grid-template-columns: auto;
     gap: 1rem;
-    /* margin-right: 16px;
-    margin-left: 16px; */
-    /* padding: 24px; */
-    /* padding: var(--card-padding) 8px; */
+    margin-right: 24px;
   }
   main .insights > div {
-    min-height: auto; /* Reset minimum height */
+    min-height: auto;
   }
 
   main .insights .column {
-    width: 100%; /* Set column width to 100% for smaller screens */
-    margin-bottom: 1rem; /* Add margin between columns */
+    width: 100%;
+    margin-bottom: 1rem;
   }
 }
 
@@ -425,7 +422,7 @@ main .insights .parameters .column {
 }
 
 /* Media Query for Responsive Navbar */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 900) {
   #content nav {
     padding: 0 24px;
     display: flex;

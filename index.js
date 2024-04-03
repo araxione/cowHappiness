@@ -53,6 +53,18 @@ function updateCowHappiness() {
 
   // Update cow happiness element
   document.getElementById("cow-happiness").textContent = currentCowHappiness;
+
+  // Get reference to the circle element
+  const circle = document.querySelector(".barn-circle");
+
+  // Change circle color based on cow happiness value
+  if (currentCowHappiness >= 80) {
+    circle.style.stroke = "#6B7E2A";
+  } else if (currentCowHappiness >= 50) {
+    circle.style.stroke = "#F7C752";
+  } else {
+    circle.style.stroke = "#EB5757";
+  }
 }
 
 // Function to update environmental conditions based on airflow and system status
