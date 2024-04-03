@@ -4,6 +4,9 @@ let humidity = 50; // Default humidity
 let co2 = 400; // Default CO2 level
 let airflow = 0; // Default airflow
 let systemStatus = false; // Default system status
+let temperatureAlertDisplayed = false;
+// Reference to the temperature alert element
+let temperatureAlertElement = null;
 
 // Function to update cow happiness based on environmental conditions
 function updateCowHappiness() {
@@ -59,6 +62,8 @@ function updateEnvironmentalConditions() {
   const idealHumidity = 50; // Ideal humidity in percentage
   const idealCO2Level = 400; // Ideal CO2 level in ppm
 
+  const exceedTemp = 21;
+
   // Calculate temperature change rate based on airflow and system status
   let temperatureChangeRate = 0;
   // if (systemStatus) {
@@ -88,6 +93,15 @@ function updateEnvironmentalConditions() {
   // Update CO2 level based on change rate (if system is on)
   co2 += co2ChangeRate;
   co2 = Math.max(Math.min(co2, 1000), 0); // Limit CO2 level between 0 ppm and 1000 ppm
+
+  // Check if sensor readings exceed predefined thresholds and generate alerts
+  if (temperature > exceedTemp && !temperatureAlertDisplayed) {
+    // Display alert only if it's not already displayed
+    displayTemperatureAlert();
+  } else if (temperature <= exceedTemp && temperatureAlertDisplayed) {
+    // Remove the alert only if it's currently displayed
+    removeTemperatureAlert();
+  }
 
   updateUI();
 
@@ -135,6 +149,10 @@ document.getElementById("toggle-icon").addEventListener("click", function () {
   }
   // Call the function initially to set the correct icon
   updateToggleIcon();
+
+  displayNotification(
+    `System status changed to ${systemStatus ? "ON" : "OFF"}`
+  );
 });
 // Update environmental conditions with airflow 0
 updateEnvironmentalConditions();
@@ -164,3 +182,103 @@ function simulateTime() {
 }
 // Initialize simulation
 simulateTime();
+
+// Function to display temperature alert
+function displayTemperatureAlert() {
+  // Create the alert element
+  const alertDiv = document.createElement("div");
+  alertDiv.classList.add("notification");
+  alertDiv.style.backgroundColor = "#FCEDEA";
+  alertDiv.style.border = "1px solid #EB5757";
+
+  // Create icon element
+  const icon = document.createElement("span");
+  icon.classList.add("material-symbols-outlined");
+  icon.textContent = "error_outline";
+  icon.style.color = "#EB5757";
+
+  // Create message element
+  const messageDiv = document.createElement("div");
+  messageDiv.classList.add("notification-message");
+  messageDiv.textContent = "Temperature exceeded predefined thresholds";
+
+  // Create close button
+  const closeButton = document.createElement("button");
+  closeButton.classList.add("close-button");
+  closeButton.innerHTML = "&times;";
+
+  // Append elements to the alert container
+  alertDiv.appendChild(icon);
+  alertDiv.appendChild(messageDiv);
+  alertDiv.appendChild(closeButton);
+
+  // Append the alert to the alerts container
+  document.getElementById("alerts-container").appendChild(alertDiv);
+
+  // Update the flags
+  temperatureAlertDisplayed = true;
+  temperatureAlertElement = alertDiv;
+}
+
+// Function to remove temperature alert
+function removeTemperatureAlert() {
+  // Remove the alert element from the DOM
+  temperatureAlertElement.remove();
+
+  // Reset the flags
+  temperatureAlertDisplayed = false;
+  temperatureAlertElement = null;
+}
+// Function to display alerts
+// function displayAlert(message, type) {
+//   const alertDiv = document.createElement("div");
+//   alertDiv.classList.add("alert", type);
+//   alertDiv.textContent = message;
+//   document.getElementById("alerts-container").appendChild(alertDiv);
+// }
+
+// Global variable to store the reference to the current notification
+let currentNotification = null;
+
+// Function to display notifications
+function displayNotification(message, status) {
+  // Remove the current notification if it exists
+  if (currentNotification) {
+    currentNotification.remove();
+  }
+
+  // Create a new notification
+  const notificationDiv = document.createElement("div");
+  notificationDiv.classList.add("notification");
+
+  // Create icon element
+  const icon = document.createElement("span");
+  icon.classList.add("material-symbols-outlined");
+  icon.textContent = "notifications";
+
+  // Create message element
+  const messageDiv = document.createElement("div");
+  messageDiv.textContent = message;
+
+  // Create close button
+  const closeButton = document.createElement("button");
+  closeButton.classList.add("close-button");
+  closeButton.innerHTML = "&times;";
+
+  // Append elements to notification container
+  notificationDiv.appendChild(icon);
+  notificationDiv.appendChild(messageDiv);
+  notificationDiv.appendChild(closeButton);
+
+  // Append notification to alerts container
+  document.getElementById("alerts-container").appendChild(notificationDiv);
+
+  // Set the current notification to the new notification
+  currentNotification = notificationDiv;
+
+  // Close button event listener
+  closeButton.addEventListener("click", () => {
+    notificationDiv.remove();
+    currentNotification = null; // Reset the current notification reference
+  });
+}
