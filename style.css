@@ -188,9 +188,17 @@ aside .sidebar a.active span {
 aside .sidebar a:hover {
   color: var(--color-primary);
   background-color: #eeeeee;
-  margin-left: 15px;
-  margin-right: 15px;
-  border-radius: 12px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 15px;
+}
+
+aside .sidebar a.selected {
+  background-color: white;
+  color: black;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 15px;
 }
 
 /* aside .sidebar a:hover span {
@@ -482,10 +490,10 @@ main .insights .parameters .column {
   } */
 }
 
-.sidebar a.selected {
+/* .sidebar a.selected {
   background-color: white;
   color: black;
   margin-left: 20px;
   margin-right: 20px;
   border-radius: 15px;
-}
+} */
