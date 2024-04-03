@@ -1,0 +1,483 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --color-primary: #1e1e24;
+  --color-notification: #eb5757;
+  --color-grid: #fff;
+  --color-label: #696969;
+  --color-green: #6b7e2a;
+  --color-yellow: #f7c752;
+  --color-alert: #fef7d1;
+  --color-light: rgba(132, 139, 200, 0.18);
+  --color-background: #eeeeee;
+
+  --card-border-radius: 2rem;
+  --card-padding: 24px;
+  --padding-1: 1.2rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  appearance: none;
+  border: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: poppins, sans-serif;
+  font-size: 0.88rem;
+  background: var(--color-background);
+  user-select: none;
+  overflow-x: hidden;
+}
+
+.container {
+  display: grid;
+  width: 100%;
+  /* gap: 1.8rem; */
+  /* margin: auto; */
+  background-color: #eeeeee;
+  grid-template-columns: 14rem auto;
+}
+
+a {
+  color: var(--color-background);
+}
+
+img {
+  display: block;
+  width: 50%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+}
+
+h3 {
+  font-size: 0.8rem;
+}
+
+h4 {
+  font-size: 0.7rem;
+}
+
+h5 {
+  font-size: 0.77rem;
+}
+
+small {
+  font-size: 0.75rem;
+}
+
+.text-muted {
+  color: var(--color-label);
+}
+
+p {
+  color: var(--color-primary);
+}
+
+.primary {
+  color: var(--color-primary);
+}
+
+.alert {
+  color: var(--color-alert);
+}
+
+.green {
+  color: var(--color-green);
+}
+
+.yellow {
+  color: var(--color-yellow);
+}
+
+aside {
+  height: 100%; /* Change height to 100% */
+  min-height: 100vh; /* Set minimum height to viewport height */
+  background-color: #1e1e24;
+}
+
+aside .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.4rem;
+}
+/* 
+aside .logo {
+  display: flex;
+  gap: 0.8rem;
+} */
+
+aside .close {
+  display: none;
+}
+
+aside .sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 86vh;
+  position: relative;
+  top: 2rem;
+}
+
+aside h3 {
+  font-weight: 500;
+}
+
+aside .sidebar a {
+  display: flex;
+  color: var(--color-background);
+  gap: 1rem;
+  align-items: center;
+  position: relative;
+  height: 3rem;
+  margin-bottom: 24px;
+  transform: all 300ms ease;
+}
+
+aside .sidebar a span {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-left: 2rem;
+}
+
+/* aside .sidebar a:last-child {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+} */
+
+aside .sidebar a.active {
+  background: var(--color-background);
+  color: var(--color-green);
+  margin-left: 0;
+}
+
+aside .sidebar a.active:before {
+  content: "";
+  width: 3px;
+  height: 100%;
+  background-color: #eeeeee;
+}
+
+aside .sidebar a.active span {
+  color: var(--color-green);
+  margin-left: calc(1rem - 3px);
+}
+
+aside .sidebar a:hover {
+  color: var(--color-primary);
+  background-color: #eeeeee;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 12px;
+}
+
+/* aside .sidebar a:hover span {
+  margin: 2rem;
+} */
+
+/* ====Main=== */
+main {
+  margin-top: 1.4rem;
+  margin-bottom: 1.4rem;
+}
+
+main .insights > div {
+  background-color: white;
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  padding-bottom: 40px;
+  margin-bottom: 1.6rem;
+  padding-right: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main .insights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.6rem;
+  padding-top: 1rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+@media screen and (max-width: 900px) {
+  main .insights {
+    grid-template-columns: auto;
+    gap: 1rem;
+    /* margin-right: 16px;
+    margin-left: 16px; */
+    /* padding: 24px; */
+    /* padding: var(--card-padding) 8px; */
+  }
+  main .insights > div {
+    min-height: auto; /* Reset minimum height */
+  }
+
+  main .insights .column {
+    width: 100%; /* Set column width to 100% for smaller screens */
+    margin-bottom: 1rem; /* Add margin between columns */
+  }
+}
+
+main .insights h3 {
+  margin: 1rem 0 0.6rem;
+  font-size: 1rem;
+}
+
+main .insights .progress {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  margin: auto;
+  margin-bottom: 24px;
+}
+
+main .insights svg circle {
+  fill: none;
+  stroke-width: 14;
+  stroke-linecap: round;
+  transform: translate(5px, 5px);
+}
+
+main .insights .progress .number {
+  font-weight: 600;
+  font-size: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main .insights .parameters {
+  display: flex;
+  position: relative;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  flex-wrap: wrap;
+}
+
+main .insights .parameters span {
+  position: relative;
+  top: 8px;
+}
+
+main .insights .parameters .column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* flex: 1; */
+  text-align: center;
+}
+
+.column h2 {
+  margin-top: 8px;
+}
+/* main .insights .parameters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+}
+.main .insights .parameters .column {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center; 
+  margin-right: 1rem;
+}
+
+.main .insights .parameters .column small {
+  margin-bottom: 0.5rem; 
+} */
+
+.value {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Define colors for different environments */
+.barn-circle {
+  stroke: var(--color-green);
+  stroke-dasharray: 191;
+  stroke-dashoffset: 29;
+}
+
+.milking-circle {
+  stroke: var(--color-yellow);
+  stroke-dasharray: 191;
+  stroke-dashoffset: 59;
+}
+
+.feeding-circle {
+  stroke: var(--color-green);
+  stroke-dasharray: 201;
+  stroke-dashoffset: 19;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  /* padding: 1rem; */
+}
+
+.logo img {
+  width: 100%;
+  max-width: 200px; /* Adjust the width as needed */
+  display: flex;
+  align-items: center;
+}
+
+#notif {
+  color: #828282;
+}
+
+/* Navbar Styling */
+#content nav {
+  height: 70px;
+  padding: 0 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Added to space elements */
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: white;
+}
+
+#content nav .search-container {
+  display: flex;
+  align-items: center;
+  /* border: 1px #696969; */
+}
+
+#content nav .search-icon {
+  padding: 16px;
+}
+
+#content nav .notification {
+  font-size: 20px;
+  position: relative;
+  color: var(--color-primary);
+}
+
+#content nav .notification .num {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-notification);
+  color: white; /* Changed to white for better visibility */
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#content nav .search-bar {
+  display: block;
+  width: 200px; /* Adjust width as needed */
+  height: 30px; /* Adjust height as needed */
+}
+
+/* Media Query for Responsive Navbar */
+@media screen and (max-width: 900px) {
+  #content nav {
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #content nav .search-notification {
+    justify-content: flex-end;
+  }
+
+  #content nav .search-bar {
+    display: none;
+  }
+  #content nav .search-icon {
+    display: block;
+    padding: 8px;
+  }
+
+  #content nav .notification {
+    font-size: 18px;
+    margin-right: 16px;
+  }
+
+  #content nav .menu-toggle {
+    display: flex;
+    cursor: pointer;
+  }
+
+  #menu {
+    color: white;
+  }
+}
+
+/* Media Query for Responsive Sidebar */
+@media screen and (max-width: 900px) {
+  aside .sidebar {
+    display: none; /* Hide sidebar by default on smaller screens */
+  }
+
+  .menu-toggle {
+    display: block; /* Show menu toggle icon */
+    cursor: pointer; /* Add cursor pointer */
+    /* padding: 10px; */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo img {
+    display: none;
+  }
+
+  aside {
+    /* width: 80px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  /* 
+  .sidebar {
+    width: 80px;
+  } */
+}
