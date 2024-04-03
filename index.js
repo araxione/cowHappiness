@@ -213,7 +213,8 @@ function displayTemperatureAlert() {
   // Create message element
   const messageDiv = document.createElement("div");
   messageDiv.classList.add("alert-message");
-  messageDiv.textContent = "Temperature exceeded predefined thresholds";
+  messageDiv.textContent =
+    "Temperature exceeded predefined thresholds! Please move the airflow slider.";
 
   // Create close button
   const closeButton = document.createElement("button");

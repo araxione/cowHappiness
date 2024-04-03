@@ -72,13 +72,13 @@ input[type="range"] {
   background-color: #007bff;
 }
 
-#airflow-slider.active::-moz-range-thumb {
+/* #airflow-slider.active::-moz-range-thumb {
   background-color: #007bff;
 }
 
 #airflow-slider.active::-ms-thumb {
   background-color: #007bff;
-}
+} */
 
 /* Disable slider thumb when system is off */
 #airflow-slider[disabled]::-webkit-slider-thumb {
@@ -86,7 +86,7 @@ input[type="range"] {
   cursor: not-allowed;
 }
 
-#airflow-slider[disabled]::-moz-range-thumb {
+/* #airflow-slider[disabled]::-moz-range-thumb {
   background-color: #ccc;
   cursor: not-allowed;
 }
@@ -94,7 +94,7 @@ input[type="range"] {
 #airflow-slider[disabled]::-ms-thumb {
   background-color: #ccc;
   cursor: not-allowed;
-}
+} */
 
 #airflow-slider {
   background-color: #ccc;
