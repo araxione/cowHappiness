@@ -103,6 +103,22 @@ function updateUI() {
   document.getElementById("co2").textContent = Math.round(co2) + "ppm";
 }
 
+// Get references to the elements representing system status and toggle icon
+const statusText = document.getElementById("status-text");
+const toggleIcon = document.getElementById("toggle-icon");
+
+// Function to update toggle icon based on system status
+function updateToggleIcon() {
+  const status = statusText.textContent.trim().toUpperCase();
+  if (status === "ON") {
+    toggleIcon.innerHTML =
+      '<span class="material-symbols-outlined">toggle_on</span>';
+  } else {
+    toggleIcon.innerHTML =
+      '<span class="material-symbols-outlined">toggle_off</span>';
+  }
+}
+
 // Event listener for toggle switch
 document.getElementById("toggle-icon").addEventListener("click", function () {
   // Toggle system status between ON and OFF
@@ -117,6 +133,8 @@ document.getElementById("toggle-icon").addEventListener("click", function () {
     // If the system is turned OFF, reset airflow to 0
     airflow = 0;
   }
+  // Call the function initially to set the correct icon
+  updateToggleIcon();
 });
 // Update environmental conditions with airflow 0
 updateEnvironmentalConditions();

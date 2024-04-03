@@ -481,3 +481,11 @@ main .insights .parameters .column {
     width: 80px;
   } */
 }
+
+.sidebar a.selected {
+  background-color: white;
+  color: black;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 15px;
+}
