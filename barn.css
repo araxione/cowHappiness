@@ -96,6 +96,11 @@ input[type="range"] {
   cursor: not-allowed;
 }
 
+#airflow-slider {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
 .insights-container {
   display: flex;
   flex-direction: column;
