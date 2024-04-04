@@ -181,12 +181,28 @@
                    <div class="second-insights">
                     <div class="insights-container">
                           <h2>Historical Trend of Humidity</h2>
+                                        <div class="filter-container">
+                <label for="filter-select">Filter:</label>
+                <select id="filter-select">
+                  <option value="today">Today</option>
+                  <option value="month">Month</option>
+                  <option value="year">Year</option>
+                </select>
+              </div>
                 <canvas
                   id="historical-humidity-chart"
                   class="historical-chart"
                 ></canvas></div>
                   <div class="insights-container">
                          <h2>Historical Trend of CO2</h2>
+                                         <div class="filter-container">
+                <label for="filter-select">Filter:</label>
+                <select id="filter-select">
+                  <option value="today">Today</option>
+                  <option value="month">Month</option>
+                  <option value="year">Year</option>
+                </select>
+              </div>
                 <canvas
                   id="historical-co2-chart"
                   class="historical-chart"
