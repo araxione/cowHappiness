@@ -45,7 +45,7 @@ body {
   display: grid;
   width: 100%;
   /* gap: 1.8rem; */
-  /* margin: auto; */
+  margin: auto;
   background-color: #eeeeee;
   grid-template-columns: 14rem auto;
 }
@@ -111,6 +111,7 @@ p {
 }
 
 aside {
+  min-height: 100vh;
   background-color: #1e1e24;
 }
 
@@ -128,6 +129,7 @@ aside .close {
 aside .sidebar {
   display: flex;
   flex-direction: column;
+  position: relative;
   top: 2rem;
 }
 
