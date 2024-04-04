@@ -233,3 +233,21 @@ input[type="range"] {
   font-size: 20px;
   color: #696969;
 }
+/* Media Query for responsiveness */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 6rem; /* Adjust the reduced width as needed */
+  }
+
+  /* Adjust the layout of the insights */
+  .insights-container {
+    flex-direction: column;
+    margin-right: 24px;
+  }
+
+  .insights {
+    display: flex;
+    flex-direction: column;
+    margin-right: 24px;
+  }
+}

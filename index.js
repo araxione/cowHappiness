@@ -1,5 +1,5 @@
 // Define variables to store environmental conditions and their ideal ranges
-let temperature = 20; // Default temperature
+let temperature = 17; // Default temperature
 let humidity = 50; // Default humidity
 let co2 = 400; // Default CO2 level
 let airflow = 0; // Default airflow
@@ -56,6 +56,8 @@ function updateCowHappiness() {
 
   // Get reference to the circle element
   const circle = document.querySelector(".barn-circle");
+  const barnDashArray = 2 * Math.PI * (currentCowHappiness / 100) * 36;
+  circle.style.strokeDasharray = `${barnDashArray} ${barnDashArray}`;
 
   // Change circle color based on cow happiness value
   if (currentCowHappiness >= 80) {

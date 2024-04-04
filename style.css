@@ -122,11 +122,6 @@ aside .top {
   justify-content: space-between;
   margin-top: 1.4rem;
 }
-/* 
-aside .logo {
-  display: flex;
-  gap: 0.8rem;
-} */
 
 aside .close {
   display: none;
@@ -160,12 +155,6 @@ aside .sidebar a span {
   font-weight: 500;
   margin-left: 2rem;
 }
-
-/* aside .sidebar a:last-child {
-  position: absolute;
-  bottom: 2rem;
-  width: 100%;
-} */
 
 aside .sidebar a.active {
   background: var(--color-background);
@@ -201,10 +190,6 @@ aside .sidebar a.selected {
   border-radius: 15px;
 }
 
-/* aside .sidebar a:hover span {
-  margin: 2rem;
-} */
-
 /* ====Main=== */
 main {
   margin-top: 1.4rem;
@@ -235,7 +220,7 @@ main .insights {
 
 @media screen and (max-width: 900px) {
   main .insights {
-    grid-template-columns: auto;
+    grid-template-columns: 1fr;
     gap: 1rem;
     margin-right: 24px;
   }
@@ -310,47 +295,11 @@ main .insights .parameters .column {
 .column h2 {
   margin-top: 8px;
 }
-/* main .insights .parameters {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  align-items: center;
-}
-.main .insights .parameters .column {
-  display: flex;
-  flex-direction: column; 
-  align-items: center;
-  justify-content: center; 
-  margin-right: 1rem;
-}
-
-.main .insights .parameters .column small {
-  margin-bottom: 0.5rem; 
-} */
 
 .value {
   font-size: 18px;
   font-weight: bold;
 }
-
-/* Define colors for different environments */
-/* .barn-circle {
-  stroke: var(--color-green);
-  stroke-dasharray: 191;
-  stroke-dashoffset: 29;
-}
-
-.milking-circle {
-  stroke: var(--color-yellow);
-  stroke-dasharray: 191;
-  stroke-dashoffset: 59;
-}
-
-.feeding-circle {
-  stroke: var(--color-green);
-  stroke-dasharray: 201;
-  stroke-dashoffset: 19;
-} */
 
 .logo {
   display: flex;
@@ -360,22 +309,21 @@ main .insights .parameters .column {
 
 .logo img {
   width: 100%;
-  max-width: 200px; /* Adjust the width as needed */
+  max-width: 200px;
   display: flex;
   align-items: center;
 }
 
-#notif {
-  color: #828282;
+.menu-toggle {
+  display: none;
 }
 
-/* Navbar Styling */
 #content nav {
   height: 70px;
   padding: 0 3rem;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Added to space elements */
+  justify-content: space-between;
   position: sticky;
   top: 0;
   left: 0;
@@ -386,39 +334,10 @@ main .insights .parameters .column {
 #content nav .search-container {
   display: flex;
   align-items: center;
-  /* border: 1px #696969; */
 }
 
 #content nav .search-icon {
-  padding: 16px;
-}
-
-#content nav .notification {
-  font-size: 20px;
-  position: relative;
-  color: var(--color-primary);
-}
-
-#content nav .notification .num {
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--color-notification);
-  color: white; /* Changed to white for better visibility */
-  font-weight: 700;
-  font-size: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#content nav .search-bar {
-  display: block;
-  width: 200px; /* Adjust width as needed */
-  height: 30px; /* Adjust height as needed */
+  padding: 24px;
 }
 
 /* Media Query for Responsive Navbar */
@@ -430,30 +349,8 @@ main .insights .parameters .column {
     justify-content: space-between;
   }
 
-  #content nav .search-notification {
-    justify-content: flex-end;
-  }
-
-  #content nav .search-bar {
-    display: none;
-  }
   #content nav .search-icon {
     display: block;
-    padding: 8px;
-  }
-
-  #content nav .notification {
-    font-size: 18px;
-    margin-right: 16px;
-  }
-
-  #content nav .menu-toggle {
-    display: flex;
-    cursor: pointer;
-  }
-
-  #menu {
-    color: white;
   }
 }
 
@@ -464,11 +361,11 @@ main .insights .parameters .column {
   }
 
   .menu-toggle {
-    display: block; /* Show menu toggle icon */
-    cursor: pointer; /* Add cursor pointer */
-    /* padding: 10px; */
+    display: block;
+    cursor: pointer;
     justify-content: center;
     align-items: center;
+    color: white;
   }
 
   .logo img {
@@ -476,15 +373,10 @@ main .insights .parameters .column {
   }
 
   aside {
-    /* width: 80px; */
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  /* 
-  .sidebar {
-    width: 80px;
-  } */
 }
 
 /* .sidebar a.selected {
