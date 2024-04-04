@@ -169,7 +169,7 @@ aside .sidebar a.active:before {
 
 aside .sidebar a.active span {
   color: var(--color-green);
-  margin-left: calc(1rem - 3px);
+  /* margin-left: calc(1rem - 3px); */
 }
 
 aside .sidebar a:hover {
@@ -183,8 +183,8 @@ aside .sidebar a:hover {
 aside .sidebar a.selected {
   background-color: white;
   color: black;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 15px;
+  margin-right: 30px;
   border-radius: 15px;
 }
 
@@ -295,8 +295,21 @@ main .insights .parameters .column {
   align-items: center;
 }
 
-.menu-toggle {
+/* .menu-toggle {
   display: none;
+} */
+
+.dashboard-toggle,
+.gate-toggle,
+.grocery-toggle,
+.grass-toggle {
+  display: none; /* Hide by default */
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #1e1e24; /* Add background color */
+  padding: 10px; /* Add padding for better visibility */
 }
 
 #content nav {
@@ -312,13 +325,13 @@ main .insights .parameters .column {
   background-color: white;
 }
 
-#content nav .search-icon {
+/* #content nav .search-icon {
   display: block;
   padding: 24px;
-}
+} */
 
 /* Media Query for Responsive Navbar */
-@media screen and (max-width: 768) {
+@media screen and (max-width: 768px) {
   #content nav {
     /* padding: 0; */
     display: flex;
@@ -346,13 +359,44 @@ main .insights .parameters .column {
     grid-template-columns: 1fr;
   }
 
-  .menu-toggle {
+  /* .menu-toggle {
     display: block;
     cursor: pointer;
     justify-content: center;
     align-items: center;
     color: white;
+  } */
+
+  .dashboard-toggle,
+  .gate-toggle,
+  .grocery-toggle,
+  .grass-toggle {
+    display: block;
+    margin-top: 40px;
   }
+
+  .selected {
+    background-color: white;
+    color: var(--color-primary);
+    align-items: center;
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+  }
+
+  a:hover {
+    color: var(--color-primary);
+    background-color: #eeeeee;
+    align-items: center;
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+  }
+
   .logo img {
     display: none;
   }
