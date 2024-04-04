@@ -273,6 +273,9 @@ main .insights .parameters .column {
   /* flex: 1; */
   text-align: center;
 }
+.mini-logo img {
+  display: none;
+}
 
 .column h2 {
   margin-top: 8px;
@@ -343,7 +346,8 @@ main .insights .parameters .column {
 /* Media query for responsiveness */
 @media screen and (max-width: 768px) {
   aside {
-    width: 100%;
+    /* width: 100%; */
+    width: 8rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -354,18 +358,40 @@ main .insights .parameters .column {
     display: none;
   }
 
+  .menu-icons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .container {
     display: flex;
     grid-template-columns: 1fr;
   }
 
-  /* .menu-toggle {
-    display: block;
-    cursor: pointer;
-    justify-content: center;
+  #content {
+    width: 100%;
+  }
+
+  nav {
+    height: 70px;
+    padding: 0 1rem; /* Add padding to the navbar if needed */
+    display: flex;
     align-items: center;
-    color: white;
-  } */
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: white;
+  }
+
+  .mini-logo img {
+    display: block;
+    justify-content: center;
+    margin-left: 30px;
+    width: 60%;
+  }
 
   .dashboard-toggle,
   .gate-toggle,
@@ -400,6 +426,7 @@ main .insights .parameters .column {
   .logo img {
     display: none;
   }
+
   .airflow-container {
     display: flex;
     flex-direction: column;
