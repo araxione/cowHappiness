@@ -140,10 +140,10 @@ function updateToggleIcon() {
   const status = statusText.textContent.trim().toUpperCase();
   if (status === "ON") {
     toggleIcon.innerHTML =
-      '<span class="material-symbols-outlined">toggle_on</span>';
+      '<span class="material-symbols-outlined" id="toggle_on">toggle_on</span>';
   } else {
     toggleIcon.innerHTML =
-      '<span class="material-symbols-outlined">toggle_off</span>';
+      '<span class="material-symbols-outlined" id="toggle_off">toggle_off</span>';
   }
 }
 
