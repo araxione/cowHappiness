@@ -190,7 +190,7 @@ document
     // Update airflow value
     airflow = parseInt(this.value);
     // Display the current airflow value on the screen
-    document.getElementById("airflow").textContent = airflow + " L/s"; // Update airflow value display
+    document.getElementById("airflow").textContent = " " + airflow + " L/s"; // Update airflow value display
     // Update environmental conditions with the new airflow value
     // Calculate power consumption based on current airflow
     const currentPowerConsumption = calculatePowerConsumption(airflow);

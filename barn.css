@@ -104,11 +104,20 @@ input[type="range"] {
 .insights-container {
   display: flex;
   flex-direction: column;
-  /* max-width: 600px; */
-  /* margin: 0 auto; */
-  /* padding: 20px; */
-  /* align-items: center; */
-  /* margin: 0 10px; */
+}
+
+.airflow-container,
+.power_container {
+  display: flex;
+  align-items: center;
+}
+
+#fan {
+  margin-right: 8px;
+}
+
+#bolt {
+  margin-right: 8px;
 }
 
 .metrics-box {
