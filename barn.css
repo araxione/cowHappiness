@@ -73,7 +73,7 @@ input[type="range"] {
 }
 
 #airflow-slider[disabled]::-webkit-slider-thumb {
-  background-color: #ccc;
+  background-color: #696969;
   cursor: not-allowed;
 }
 
@@ -198,44 +198,13 @@ input[type="range"] {
   color: #696969;
 }
 
-/* Media query for responsiveness */
-/* @media screen and (max-width: 768px) {
-  aside {
-    width: 100%;
-    height: 100%;
-  }
-
-  .container {
-    display: flex;
-    grid-template-columns: 1fr;
-  }
-
-  .menu-toggle {
-    display: block;
-    padding: 1rem;
-    cursor: pointer;
-  }
-
-  .sidebar {
-    display: none;
-  }
-
-  .airflow-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .power-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #alerts-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
-  }
-} */
+#alerts-container {
+  position: fixed;
+  top: 15px;
+  left: 60%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 550px;
+  padding: 20px;
+  /* z-index: 9999;  */
+}
