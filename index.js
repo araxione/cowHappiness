@@ -171,16 +171,32 @@ document.getElementById("toggle-icon").addEventListener("click", function () {
 // Update environmental conditions with airflow 0
 updateEnvironmentalConditions();
 
+// Function to calculate power consumption based on airflow
+function calculatePowerConsumption(airflow) {
+  const basePowerConsumption = 0;
+  const airflowMultiplier = 2;
+
+  // Calculate power consumption based on airflow
+  let powerConsumption = basePowerConsumption + airflow * airflowMultiplier;
+
+  return powerConsumption;
+}
+
 // Event listener for airflow slider
 document
   .getElementById("airflow-slider")
   .addEventListener("input", function () {
+    const powerElement = document.getElementById("power");
     // Update airflow value
     airflow = parseInt(this.value);
     // Display the current airflow value on the screen
     document.getElementById("airflow").textContent = airflow + " L/s"; // Update airflow value display
     // Update environmental conditions with the new airflow value
-    // updateEnvironmentalConditions();
+    // Calculate power consumption based on current airflow
+    const currentPowerConsumption = calculatePowerConsumption(airflow);
+
+    // Update power consumption element
+    powerElement.textContent = currentPowerConsumption + " kW";
   });
 
 // Function to simulate time passing
