@@ -113,18 +113,32 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   document
-    .getElementById("filter-select-cow-happiness")
+    .getElementById("filter-select-temperature")
     .addEventListener("change", function (event) {
       var selectedOption = event.target.value;
       updateChartData(selectedOption, temperatureChart);
     });
 
   document
-    .getElementById("filter-select-environmental")
+    .getElementById("filter-select-humidity")
     .addEventListener("change", function (event) {
       var selectedOption = event.target.value;
-      updateChartData(selectedOption, temperatureChart);
       updateChartData(selectedOption, humidityChart);
+    });
+
+  document
+    .getElementById("filter-select-co2")
+    .addEventListener("change", function (event) {
+      var selectedOption = event.target.value;
       updateChartData(selectedOption, co2Chart);
     });
+
+  // document
+  //   .getElementById("filter-select-environmental")
+  //   .addEventListener("change", function (event) {
+  //     var selectedOption = event.target.value;
+  //     updateChartData(selectedOption, temperatureChart);
+  //     updateChartData(selectedOption, humidityChart);
+  //     updateChartData(selectedOption, co2Chart);
+  //   });
 });
