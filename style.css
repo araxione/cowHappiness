@@ -131,6 +131,7 @@ aside .sidebar {
   flex-direction: column;
   position: relative;
   top: 2rem;
+  align-items: center;
 }
 
 aside h3 {
@@ -151,13 +152,7 @@ aside .sidebar a {
 aside .sidebar a span {
   font-size: 1.6rem;
   font-weight: 500;
-  margin-left: 2rem;
-}
-
-aside .sidebar a.active {
-  background: var(--color-background);
-  color: var(--color-green);
-  margin-left: 0;
+  /* margin-left: 2rem; */
 }
 
 aside .sidebar a.active:before {
@@ -167,25 +162,20 @@ aside .sidebar a.active:before {
   background-color: #eeeeee;
 }
 
-aside .sidebar a.active span {
-  color: var(--color-green);
-  /* margin-left: calc(1rem - 3px); */
-}
-
 aside .sidebar a:hover {
   color: var(--color-primary);
   background-color: #eeeeee;
-  margin-left: 20px;
-  margin-right: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
   border-radius: 15px;
 }
 
 aside .sidebar a.selected {
   background-color: white;
   color: black;
-  margin-left: 15px;
-  margin-right: 30px;
   border-radius: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 /* ====Main=== */
@@ -289,13 +279,14 @@ main .insights .parameters .column {
 .logo {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .logo img {
   width: 100%;
-  max-width: 200px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 /* .menu-toggle {
@@ -418,7 +409,7 @@ main .insights .parameters .column {
     padding-top: 20px;
     padding-left: 15px;
     padding-right: 15px;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     border-radius: 15px;
   }
 
