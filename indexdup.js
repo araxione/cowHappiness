@@ -52,6 +52,14 @@ function updateCowHappiness() {
   const milkingCircle = document.querySelector(".milking-circle");
   const feedingCircle = document.querySelector(".feeding-circle");
 
+  const barnDashArray = 2 * Math.PI * (barnCowHappiness / 100) * 36;
+  const milkingDashArray = 2 * Math.PI * (milkingParlorCowHappiness / 100) * 36;
+  const feedingDashArray = 2 * Math.PI * (feedingAreaCowHappiness / 100) * 36;
+
+  barnCircle.style.strokeDasharray = `${barnDashArray} ${barnDashArray}`;
+  milkingCircle.style.strokeDasharray = `${milkingDashArray} ${milkingDashArray}`;
+  feedingCircle.style.strokeDasharray = `${feedingDashArray} ${feedingDashArray}`;
+
   barnCircle.style.stroke = getColor(barnCowHappiness);
   milkingCircle.style.stroke = getColor(milkingParlorCowHappiness);
   feedingCircle.style.stroke = getColor(feedingAreaCowHappiness);
