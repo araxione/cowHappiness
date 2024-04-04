@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cow Happiness Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./barn.css" />
+  </head>
+  <body>
+    <div class="container">
+      <aside>
+        <div class="top">
+          <div class="logo">
+            <img src="./images/logo.png" alt="Logo" />
+          </div>
+          <div class="menu-toggle" id="menu-toggle">
+            <span class="material-symbols-outlined" id="menu"> menu </span>
+          </div>
+        </div>
+        <div class="sidebar">
+          <a href="./index.html">
+            <span class="material-symbols-outlined"> space_dashboard </span>
+            <h3>Dashboard</h3>
+          </a>
+          <a href="./barn.html">
+            <span class="material-symbols-outlined"> gate </span>
+            <h3>Barn</h3>
+          </a>
+          <a href="./milkingparlor.html" class="selected">
+            <span class="material-symbols-outlined"> grocery </span>
+            <h3>Milking Parlor</h3>
+          </a>
+          <a href="./feedingarea.html">
+            <span class="material-symbols-outlined"> grass </span>
+            <h3>Feeding Area</h3>
+          </a>
+        </div>
+      </aside>
+      <section id="content">
+        <nav>
+          <h1>Milking Parlor</h1>
+          <div id="alerts-container"></div>
+          <div class="search-container">
+            <div class="search-icon">
+              <span class="material-symbols-outlined"> search </span>
+            </div>
+          </div>
+        </nav>
+        <main>
+          <div class="insights">
+            <div class="insights-container">
+              <h2>Ventilation and Heating System Controls</h2>
+              <span id="toggle-icon" class="material-symbols-outlined"
+                >toggle_on</span
+              >
+              <div id="status">
+                <h3>Status</h3>
+                <p id="status-text">ON</p>
+              </div>
+              <div class="metrics-box">
+                <div id="metrics">
+                  <h3>Metrics</h3>
+                  <p>
+                    <div class="airflow-container">
+                    <span class="material-symbols-outlined" id="fan"> mode_fan </span
+                    >Airflow:&nbsp <span id="airflow"> 0 L/s</span></div>
+                  </p><br/>
+                  <p><div class="power-container"><span class="material-symbols-outlined" id="bolt"> bolt </span
+                    >Power Consumption: <span id="power">0 kW</span></div></p>
+                </div>
+                <div id="controls">
+                  <h3>Controls</h3>
+                  <label for="airflow-slider">Adjust Airflow:</label>
+                  <input
+                    type="range"
+                    id="airflow-slider"
+                    min="0"
+                    max="100"
+                    step="1"
+                    value="0"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="insights-container">
+              <h2>General</h2>
+              <h3><center>Average Cow Happiness Index Level</center></h3>
+              <div class="progress">
+                <!-- <canvas id="barn-circle"></canvas> -->
+                <svg>
+                  <circle class="barn-circle" cx="38" cy="38" r="36"></circle>
+                </svg>
+                <div class="number">
+                  <p id="cow-happiness">90</p>
+                </div>
+              </div>
+              <div class="parameters">
+                <div class="column">
+                  <small class="text-muted">
+                    <span class="material-symbols-outlined"
+                      >device_thermostat</span
+                    >
+                    Temperature
+                  </small>
+                  <h2 id="temperature" class="value">--°C</h2>
+                </div>
+                <div class="column">
+                  <small class="text-muted">
+                    <span class="material-symbols-outlined"
+                      >humidity_percentage</span
+                    >
+                    Humidity
+                  </small>
+                  <h2 id="humidity" class="value">--%</h2>
+                </div>
+                <div class="column">
+                  <small class="text-muted">
+                    <span class="material-symbols-outlined">airwave</span>
+                    CO2
+                  </small>
+                  <h2 id="co2" class="value">--ppm</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="second-insights">
+            <div class="insights-container">
+              <h2>Historical Trend of Cow Happiness Index</h2>
+              <div class="filter-container">
+                <label for="cow-happiness-filter">Filter:</label>
+                <select id="cow-happiness-filter">
+                  <option value="today" class="with-arrow">Today</option>
+                  <option value="month">Month</option>
+                  <option value="year">Year</option>
+                </select>
+              </div>
+                <canvas
+                  id="historical-cow-happiness-chart"
+                  class="historical-chart"
+                ></canvas>
+              </div>
+            <div class="insights-container">
+              <h2>Historical Trend of Temperature</h2>
+              <div class="filter-container">
+                <label for="filter-select-temperature">Filter:</label>
+                <select id="filter-select-temperature">
+                  <option value="today">Today</option>
+                  <option value="month">Month</option>
+                  <option value="year">Year</option>
+                </select>
+              </div>
+                <canvas
+                  id="historical-temperature-chart"
+                  class="historical-chart"
+                ></canvas>
+                </div></div>
+
+                   <div class="second-insights">
+                    <div class="insights-container">
+                          <h2>Historical Trend of Humidity</h2>
+                                        <div class="filter-container">
+                <label for="filter-select-humidity">Filter:</label>
+                <select id="filter-select-humidity">
+                  <option value="today">Today</option>
+                  <option value="month">Month</option>
+                  <option value="year">Year</option>
+                </select>
+              </div>
+                <canvas
+                  id="historical-humidity-chart"
+                  class="historical-chart"
+                ></canvas></div>
+                  <div class="insights-container">
+                         <h2>Historical Trend of CO2</h2>
+                                         <div class="filter-container">
+                <label for="filter-select-co2">Filter:</label>
+                <select id="filter-select-co2">
+                  <option value="today">Today</option>
+                  <option value="month">Month</option>
+                  <option value="year">Year</option>
+                </select>
+              </div>
+                <canvas
+                  id="historical-co2-chart"
+                  class="historical-chart"
+                ></canvas>
+              </div>
+              </div>
+          </div>
+        </main>
+      </section>
+    </div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./chart1.js"></script>
+    <script src="./chart2.js"></script>
+    <script src="./barn.js"></script>
+  </body>
+</html>
