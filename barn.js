@@ -3,7 +3,7 @@ let temperature = 20; // Default temperature
 let humidity = 50; // Default humidity
 let co2 = 400; // Default CO2 level
 let airflow = 0; // Default airflow
-let systemStatus = false; // Default system status
+let systemStatus = true; // Default system status
 let temperatureAlertDisplayed = false;
 // Reference to the temperature alert element
 let temperatureAlertElement = null;
@@ -76,7 +76,7 @@ function updateEnvironmentalConditions() {
   const idealHumidity = 50; // Ideal humidity in percentage
   const idealCO2Level = 400; // Ideal CO2 level in ppm
 
-  const exceedTemp = 21;
+  const exceedTemp = 22;
 
   // Calculate temperature change rate based on airflow and system status
   let temperatureChangeRate = 0;
@@ -149,25 +149,21 @@ function updateToggleIcon() {
 
 // Event listener for toggle switch
 document.getElementById("toggle-icon").addEventListener("click", function () {
-  // Toggle system status between ON and OFF
   systemStatus = !systemStatus;
-  // Update status text based on system status
   document.getElementById("status-text").textContent = systemStatus
     ? "ON"
     : "OFF";
-  // Update airflow slider disabled attribute based on system status
   document.getElementById("airflow-slider").disabled = !systemStatus;
   if (!systemStatus) {
-    // If the system is turned OFF, reset airflow to 0
     airflow = 0;
   }
-  // Call the function initially to set the correct icon
   updateToggleIcon();
 
   displayNotification(
     `System status changed to ${systemStatus ? "ON" : "OFF"}`
   );
 });
+
 // Update environmental conditions with airflow 0
 updateEnvironmentalConditions();
 
@@ -233,7 +229,7 @@ function displayTemperatureAlert() {
   const messageDiv = document.createElement("div");
   messageDiv.classList.add("alert-message");
   messageDiv.textContent =
-    "Temperature exceeded predefined thresholds! Please move the airflow slider.";
+    "Temperature exceeded 22°C! Please move the airflow slider.";
 
   // Create close button
   const closeButton = document.createElement("button");
