@@ -371,20 +371,11 @@ main .insights .parameters .column {
     align-items: center;
   }
 
-  /* #alerts-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
-  } */
-}
-
-/* Media query for responsiveness */
-@media screen and (max-width: 768px) {
-  #alerts-container {
-    max-width: calc(100% - 40px); /* Reduce maximum width on smaller screens */
-    padding: 10px; /* Reduce padding on smaller screens */
-    border-radius: 0; /* Remove border radius on smaller screens */
-    box-shadow: none; /* Remove box shadow on smaller screens */
+  .notification,
+  .notification-message,
+  .alert,
+  .alert-message {
+    max-width: 75%;
+    margin-left: 70px;
   }
 }
