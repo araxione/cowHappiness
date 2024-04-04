@@ -152,7 +152,6 @@ aside .sidebar a {
 aside .sidebar a span {
   font-size: 1.6rem;
   font-weight: 500;
-  /* margin-left: 2rem; */
 }
 
 aside .sidebar a.active:before {
@@ -381,6 +380,7 @@ main .insights .parameters .column {
     display: block;
     margin-left: 20px;
     width: 60%;
+    margin-bottom: 32px;
   }
 
   .dashboard-toggle,
@@ -388,7 +388,7 @@ main .insights .parameters .column {
   .grocery-toggle,
   .grass-toggle {
     display: block;
-    margin-top: 40px;
+    margin-top: 24px;
   }
 
   .selected {
