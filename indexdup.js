@@ -8,7 +8,9 @@ let milkingParlorCO2 = 400;
 let feedingAreaTemperature = 20;
 let feedingAreaHumidity = 50;
 let feedingAreaCO2 = 400;
-let cowHappiness = 50;
+let barnCowHappiness = 90; // Set initial cow happiness for the barn
+let milkingParlorCowHappiness = 80; // Set initial cow happiness for the milking parlor
+let feedingAreaCowHappiness = 95;
 
 // Function Definitions
 function updateEnvironmentalConditions() {
@@ -37,11 +39,22 @@ function updateEnvironmentalConditions() {
 function updateCowHappiness() {
   // Implement cow happiness update if needed
   document.getElementById("barn-cow-happiness").textContent =
-    Math.round(cowHappiness);
-  document.getElementById("milking-cow-happiness").textContent =
-    Math.round(cowHappiness);
-  document.getElementById("feeding-cow-happiness").textContent =
-    Math.round(cowHappiness);
+    Math.round(barnCowHappiness);
+  document.getElementById("milking-cow-happiness").textContent = Math.round(
+    milkingParlorCowHappiness
+  );
+  document.getElementById("feeding-cow-happiness").textContent = Math.round(
+    feedingAreaCowHappiness
+  );
+
+  // Change circle color based on cow happiness
+  const barnCircle = document.querySelector(".barn-circle");
+  const milkingCircle = document.querySelector(".milking-circle");
+  const feedingCircle = document.querySelector(".feeding-circle");
+
+  barnCircle.style.stroke = getColor(barnCowHappiness);
+  milkingCircle.style.stroke = getColor(milkingParlorCowHappiness);
+  feedingCircle.style.stroke = getColor(feedingAreaCowHappiness);
 }
 
 function updateUI() {
@@ -50,25 +63,40 @@ function updateUI() {
   updateCowHappiness();
 }
 
+function getColor(cowHappiness) {
+  if (cowHappiness >= 80) {
+    return "#6B7E2A"; // Green color for high happiness
+  } else if (cowHappiness >= 50) {
+    return "#F7C752"; // Orange color for moderate happiness
+  } else {
+    return "#e74c3c"; // Red color for low happiness
+  }
+}
+
 function decreaseEnvironmentalConditionsAndCowHappiness() {
   // Decrease temperature, humidity, and CO2 values for the Barn
-  barnTemperature -= 0.5;
+  barnTemperature -= 0.1;
   barnHumidity -= 0.5;
   barnCO2 -= 0.5;
 
   // Decrease temperature, humidity, and CO2 values for the Milking Parlor
-  milkingParlorTemperature -= 0.5;
+  milkingParlorTemperature -= 0.1;
   milkingParlorHumidity -= 0.5;
   milkingParlorCO2 -= 0.5;
 
   // Decrease temperature, humidity, and CO2 values for the Feeding Area
-  feedingAreaTemperature -= 0.5;
+  feedingAreaTemperature -= 0.1;
   feedingAreaHumidity -= 0.5;
   feedingAreaCO2 -= 0.5;
 
   // Decrease cow happiness by 1
-  cowHappiness -= 1;
-  cowHappiness = Math.max(cowHappiness, 0);
+  barnCowHappiness -= 1;
+  milkingParlorCowHappiness -= 1;
+  feedingAreaCowHappiness -= 1;
+
+  barnCowHappiness = Math.max(barnCowHappiness, 0);
+  milkingParlorCowHappiness = Math.max(milkingParlorCowHappiness, 0);
+  feedingAreaCowHappiness = Math.max(feedingAreaCowHappiness, 0);
 }
 
 function simulateTime() {
