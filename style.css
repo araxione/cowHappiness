@@ -111,8 +111,6 @@ p {
 }
 
 aside {
-  height: 100%;
-  min-height: 100vh;
   background-color: #1e1e24;
 }
 
@@ -130,8 +128,6 @@ aside .close {
 aside .sidebar {
   display: flex;
   flex-direction: column;
-  height: 86vh;
-  position: relative;
   top: 2rem;
 }
 
@@ -333,11 +329,10 @@ main .insights .parameters .column {
 @media screen and (max-width: 768px) {
   aside {
     width: 100%;
-    height: 100%;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* height: 100%; */
   }
 
   aside .sidebar {

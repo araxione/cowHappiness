@@ -111,18 +111,6 @@ input[type="range"] {
   margin: 0 10px;
 }
 
-.historical-chart-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-}
-
-/* .historical-chart {
-  width: 100%;
-  height: 300px;
-} */
-
 .second-insights {
   margin-top: 20px;
 }
