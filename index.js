@@ -1,5 +1,5 @@
 // Define variables to store environmental conditions and their ideal ranges
-let temperature = 17; // Default temperature
+let temperature = 20; // Default temperature
 let humidity = 50; // Default humidity
 let co2 = 400; // Default CO2 level
 let airflow = 0; // Default airflow
@@ -213,6 +213,7 @@ function simulateTime() {
 // Initialize simulation
 simulateTime();
 
+let currentAlert = null;
 // Function to display temperature alert
 function displayTemperatureAlert() {
   // Create the alert element
@@ -246,12 +247,14 @@ function displayTemperatureAlert() {
 
   // Append the alert to the alerts container
   document.getElementById("alerts-container").appendChild(alertDiv);
+  currentAlert = alertDiv;
 
   closeButton.addEventListener("click", () => {
     alertDiv.remove();
+    currentAlert = null;
   });
 
-  // Set a timeout to remove the alert after 5 seconds
+  // Set a timeout to remove the alert after 4 seconds
   setTimeout(() => {
     alertDiv.remove();
     temperatureAlertDisplayed = false;
@@ -260,16 +263,6 @@ function displayTemperatureAlert() {
   // Update the flags
   temperatureAlertDisplayed = true;
   temperatureAlertElement = alertDiv;
-}
-
-// Function to remove temperature alert
-function removeTemperatureAlert() {
-  // Remove the alert element from the DOM
-  temperatureAlertElement.remove();
-
-  // Reset the flags
-  temperatureAlertDisplayed = false;
-  temperatureAlertElement = null;
 }
 
 // Global variable to store the reference to the current notification
