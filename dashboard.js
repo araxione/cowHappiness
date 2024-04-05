@@ -1,20 +1,17 @@
-// Variable Declarations
 let barnTemperature = 20;
 let barnHumidity = 50;
 let barnCO2 = 400;
-let milkingParlorTemperature = 20;
-let milkingParlorHumidity = 50;
-let milkingParlorCO2 = 400;
-let feedingAreaTemperature = 20;
-let feedingAreaHumidity = 50;
-let feedingAreaCO2 = 400;
-let barnCowHappiness = 90; // Set initial cow happiness for the barn
-let milkingParlorCowHappiness = 80; // Set initial cow happiness for the milking parlor
+let milkingParlorTemperature = 14;
+let milkingParlorHumidity = 30;
+let milkingParlorCO2 = 420;
+let feedingAreaTemperature = 19;
+let feedingAreaHumidity = 60;
+let feedingAreaCO2 = 350;
+let barnCowHappiness = 90;
+let milkingParlorCowHappiness = 80;
 let feedingAreaCowHappiness = 95;
 
-// Function Definitions
 function updateEnvironmentalConditions() {
-  // Implement environmental condition updates if needed
   document.getElementById("barn-temperature").textContent =
     barnTemperature.toFixed(1) + "°C";
   document.getElementById("barn-humidity").textContent =
@@ -37,7 +34,6 @@ function updateEnvironmentalConditions() {
 }
 
 function updateCowHappiness() {
-  // Implement cow happiness update if needed
   document.getElementById("barn-cow-happiness").textContent =
     Math.round(barnCowHappiness);
   document.getElementById("milking-cow-happiness").textContent = Math.round(
@@ -66,7 +62,6 @@ function updateCowHappiness() {
 }
 
 function updateUI() {
-  // Implement UI update if needed
   updateEnvironmentalConditions();
   updateCowHappiness();
 }
@@ -108,15 +103,11 @@ function decreaseEnvironmentalConditionsAndCowHappiness() {
 }
 
 function simulateTime() {
-  // Decrease environmental conditions and cow happiness
   decreaseEnvironmentalConditionsAndCowHappiness();
 
-  // Update UI to reflect changes
   updateUI();
 
-  // Repeat simulation for every second
   setTimeout(simulateTime, 1000);
 }
 
-// Initialize simulation
 simulateTime();
