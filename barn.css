@@ -77,7 +77,17 @@ input[type="range"] {
   cursor: not-allowed;
 }
 
-#airflow-slider {
+#heating-slider.active::-webkit-slider-thumb {
+  background-color: #007bff;
+}
+
+#heating-slider[disabled]::-webkit-slider-thumb {
+  background-color: #696969;
+  cursor: not-allowed;
+}
+
+#airflow-slider,
+#heating-slider {
   background-color: #ccc;
   border-radius: 10px;
 }
