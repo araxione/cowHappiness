@@ -44,7 +44,6 @@ body {
 .container {
   display: grid;
   width: 100%;
-  /* gap: 1.8rem; */
   margin: auto;
   background-color: #eeeeee;
   grid-template-columns: 14rem auto;
@@ -288,21 +287,17 @@ main .insights .parameters .column {
   justify-content: center;
 }
 
-/* .menu-toggle {
-  display: none;
-} */
-
 .dashboard-toggle,
 .gate-toggle,
 .grocery-toggle,
 .grass-toggle {
-  display: none; /* Hide by default */
+  display: none;
   cursor: pointer;
   justify-content: center;
   align-items: center;
   color: white;
-  background-color: #1e1e24; /* Add background color */
-  padding: 10px; /* Add padding for better visibility */
+  background-color: #1e1e24;
+  padding: 10px;
 }
 
 #content nav {
@@ -318,15 +313,9 @@ main .insights .parameters .column {
   background-color: white;
 }
 
-/* #content nav .search-icon {
-  display: block;
-  padding: 24px;
-} */
-
 /* Media Query for Responsive Navbar */
 @media screen and (max-width: 768px) {
   #content nav {
-    /* padding: 0; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -336,12 +325,10 @@ main .insights .parameters .column {
 /* Media query for responsiveness */
 @media screen and (max-width: 768px) {
   aside {
-    /* width: 100%; */
     width: 8rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* height: 100%; */
   }
 
   aside .sidebar {
@@ -365,7 +352,7 @@ main .insights .parameters .column {
 
   nav {
     height: 70px;
-    padding: 0 1rem; /* Add padding to the navbar if needed */
+    padding: 0 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
