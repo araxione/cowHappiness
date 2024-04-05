@@ -86,14 +86,23 @@
                     >Airflow:&nbsp <span id="airflow"> 0 L/s</span></div>
                   </p><br/>
                   <p><div class="power-container"><span class="material-symbols-outlined" id="bolt"> bolt </span
-                    >Power: <span id="power">0 kW</span></div></p>
+                    >Power: <span id="heating">0 kW</span></div></p>
                 </div>
                 <div id="controls">
                   <h3>Controls</h3>
-                  <label for="airflow-slider">Adjust Airflow:</label>
+                <label for="airflow-slider">Adjust Airflow:</label>
                   <input
                     type="range"
                     id="airflow-slider"
+                    min="0"
+                    max="100"
+                    step="1"
+                    value="0"
+                  />
+                   <label for="heating-slider">Adjust Heating:</label>
+                  <input
+                    type="range"
+                    id="heating-slider"
                     min="0"
                     max="100"
                     step="1"

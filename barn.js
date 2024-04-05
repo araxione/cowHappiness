@@ -1,19 +1,17 @@
-// Define variables to store environmental conditions and their ideal ranges
-let temperature = 20; // Default temperature
-let humidity = 50; // Default humidity
-let co2 = 400; // Default CO2 level
-let airflow = 0; // Default airflow
-let systemStatus = true; // Default system status
+let temperature = 20;
+let humidity = 50;
+let co2 = 400;
+let airflow = 0;
+let heating = 0;
+let systemStatus = true;
 let temperatureAlertDisplayed = false;
-// Reference to the temperature alert element
 let temperatureAlertElement = null;
 
 // Function to update cow happiness based on environmental conditions
 function updateCowHappiness() {
-  // Define ideal ranges for environmental conditions
-  const idealTemperature = 10; // Ideal temperature in degrees Celsius
-  const idealHumidity = 50; // Ideal humidity in percentage
-  const idealCO2Level = 400; // Ideal CO2 level in ppm
+  const idealTemperature = 10;
+  const idealHumidity = 50;
+  const idealCO2Level = 400;
 
   // Calculate deviation from ideal ranges for each environmental condition
   const temperatureDeviation = Math.abs(temperature - idealTemperature);
@@ -23,13 +21,11 @@ function updateCowHappiness() {
   // Define happiness change rates based on deviations
   let temperatureHappinessChange =
     0.5 + (idealTemperature - temperatureDeviation) * 0.05;
-  // let temperatureHappinessChange = 0.5 - temperatureDeviation * 0.1;
   let humidityHappinessChange =
     0.5 + (idealHumidity - humidityDeviation) * 0.001;
   let co2HappinessChange = 0.5 + (idealCO2Level - co2Deviation) * 0.002;
 
   // Calculate total happiness change rate
-  // let totalHappinessChangeRate = temperatureHappinessChange;
   let totalHappinessChangeRate =
     temperatureHappinessChange + humidityHappinessChange + co2HappinessChange;
 
@@ -69,6 +65,14 @@ function updateCowHappiness() {
   }
 }
 
+// Function to remove temperature alert
+function removeTemperatureAlert() {
+  temperatureAlertElement.remove();
+
+  temperatureAlertDisplayed = false;
+  temperatureAlertElement = null;
+}
+
 // Function to update environmental conditions based on airflow and system status
 function updateEnvironmentalConditions() {
   // Define ideal ranges for environmental conditions
@@ -78,60 +82,45 @@ function updateEnvironmentalConditions() {
 
   const exceedTemp = 22;
 
-  // Calculate temperature change rate based on airflow and system status
+  // Calculate temperature change rate based on airflow & heating and system status
   let temperatureChangeRate = 0;
-  // if (systemStatus) {
-  temperatureChangeRate = 0.2 - 0.01 * airflow;
-  // }
+  temperatureChangeRate = 0.2 - 0.01 * airflow + 0.01 * heating;
 
   // Calculate humidity change rate based on airflow and system status
   let humidityChangeRate = 0;
-  // if (systemStatus) {
   humidityChangeRate = 0.2 - 0.01 * airflow;
-  // }
 
   // Calculate CO2 level change rate based on airflow and system status
   let co2ChangeRate = 0;
-  // if (systemStatus) {
   co2ChangeRate = 0.2 - 0.1 * airflow;
-  // }
 
-  // Update temperature based on change rate (if system is on)
   temperature += temperatureChangeRate;
-  temperature = Math.max(Math.min(temperature, 30), 0); // Limit temperature between 0°C and 30°C
+  temperature = Math.max(Math.min(temperature, 30), 0);
 
-  // Update humidity based on change rate (if system is on)
   humidity += humidityChangeRate;
-  humidity = Math.max(Math.min(humidity, 100), 0); // Limit humidity between 0% and 100%
+  humidity = Math.max(Math.min(humidity, 100), 0);
 
-  // Update CO2 level based on change rate (if system is on)
   co2 += co2ChangeRate;
-  co2 = Math.max(Math.min(co2, 1000), 0); // Limit CO2 level between 0 ppm and 1000 ppm
+  co2 = Math.max(Math.min(co2, 1000), 0);
 
   // Check if sensor readings exceed predefined thresholds and generate alerts
   if (temperature > exceedTemp && !temperatureAlertDisplayed) {
-    // Display alert only if it's not already displayed
     displayTemperatureAlert();
   } else if (temperature <= exceedTemp && temperatureAlertDisplayed) {
-    // Remove the alert only if it's currently displayed
     removeTemperatureAlert();
   }
 
   updateUI();
-
-  // Update cow happiness based on environmental conditions
   updateCowHappiness();
 }
 
 function updateUI() {
-  // Update environmental condition elements in HTML
   document.getElementById("temperature").textContent =
     temperature.toFixed(1) + "°C";
   document.getElementById("humidity").textContent = Math.round(humidity) + "%";
   document.getElementById("co2").textContent = Math.round(co2) + "ppm";
 }
 
-// Get references to the elements representing system status and toggle icon
 const statusText = document.getElementById("status-text");
 const toggleIcon = document.getElementById("toggle-icon");
 
@@ -154,8 +143,10 @@ document.getElementById("toggle-icon").addEventListener("click", function () {
     ? "ON"
     : "OFF";
   document.getElementById("airflow-slider").disabled = !systemStatus;
+  document.getElementById("heating-slider").disabled = !systemStatus;
   if (!systemStatus) {
     airflow = 0;
+    heating = 0;
   }
   updateToggleIcon();
 
@@ -164,46 +155,29 @@ document.getElementById("toggle-icon").addEventListener("click", function () {
   );
 });
 
-// Update environmental conditions with airflow 0
 updateEnvironmentalConditions();
-
-// Function to calculate power consumption based on airflow
-function calculatePowerConsumption(airflow) {
-  const basePowerConsumption = 0;
-  const airflowMultiplier = 2;
-
-  // Calculate power consumption based on airflow
-  let powerConsumption = basePowerConsumption + airflow * airflowMultiplier;
-
-  return powerConsumption;
-}
 
 // Event listener for airflow slider
 document
   .getElementById("airflow-slider")
   .addEventListener("input", function () {
-    const powerElement = document.getElementById("power");
-    // Update airflow value
     airflow = parseInt(this.value);
-    // Display the current airflow value on the screen
     document.getElementById("airflow").textContent = " " + airflow + " L/s"; // Update airflow value display
-    // Update environmental conditions with the new airflow value
-    // Calculate power consumption based on current airflow
-    const currentPowerConsumption = calculatePowerConsumption(airflow);
+  });
 
-    // Update power consumption element
-    powerElement.textContent = currentPowerConsumption + " kW";
+// Event listener for heating slider
+document
+  .getElementById("heating-slider")
+  .addEventListener("input", function () {
+    heating = parseInt(this.value);
+    document.getElementById("heating").textContent = " " + heating + " kW";
   });
 
 // Function to simulate time passing
 function simulateTime() {
-  // Update environmental conditions
   updateEnvironmentalConditions();
 
-  // Update UI to reflect changes
   updateUI();
-
-  // Repeat simulation for every second
   setTimeout(simulateTime, 1000);
 }
 // Initialize simulation
@@ -212,26 +186,22 @@ simulateTime();
 let currentAlert = null;
 // Function to display temperature alert
 function displayTemperatureAlert() {
-  // Create the alert element
   const alertDiv = document.createElement("div");
   alertDiv.classList.add("alert");
   alertDiv.style.backgroundColor = "#FCEDEA";
   alertDiv.style.border = "1px solid #EB5757";
 
-  // Create icon element
   const icon = document.createElement("span");
   icon.classList.add("material-symbols-outlined");
   icon.textContent = "error_outline";
   icon.style.color = "#EB5757";
   icon.style.marginRight = "10px";
 
-  // Create message element
   const messageDiv = document.createElement("div");
   messageDiv.classList.add("alert-message");
   messageDiv.textContent =
-    "Temperature exceeded 22°C! Please move the airflow slider.";
+    "Temperature exceeded 22°C! Please increase airflow and/or decrease heating.";
 
-  // Create close button
   const closeButton = document.createElement("button");
   closeButton.classList.add("close-button");
   closeButton.innerHTML = "&times;";
@@ -266,7 +236,6 @@ let currentNotification = null;
 
 // Function to display notifications
 function displayNotification(message, status) {
-  // Remove the current notification if it exists
   if (currentNotification) {
     currentNotification.remove();
   }
@@ -275,21 +244,17 @@ function displayNotification(message, status) {
   const notificationDiv = document.createElement("div");
   notificationDiv.classList.add("notification");
 
-  // Create icon element
   const icon = document.createElement("span");
   icon.classList.add("material-symbols-outlined");
   icon.textContent = "notifications";
 
-  // Create message element
   const messageDiv = document.createElement("div");
   messageDiv.textContent = message;
 
-  // Create close button
   const closeButton = document.createElement("button");
   closeButton.classList.add("n-close-button");
   closeButton.innerHTML = "&times;";
 
-  // Append elements to notification container
   notificationDiv.appendChild(icon);
   notificationDiv.appendChild(messageDiv);
   notificationDiv.appendChild(closeButton);
@@ -297,7 +262,7 @@ function displayNotification(message, status) {
   // Append notification to alerts container
   document.getElementById("alerts-container").appendChild(notificationDiv);
 
-  // Hide notification after 5 seconds
+  // Hide notification after 4 seconds
   setTimeout(() => {
     notificationDiv.remove();
   }, 4000);
