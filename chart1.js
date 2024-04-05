@@ -132,13 +132,4 @@ document.addEventListener("DOMContentLoaded", function () {
       var selectedOption = event.target.value;
       updateChartData(selectedOption, co2Chart);
     });
-
-  // document
-  //   .getElementById("filter-select-environmental")
-  //   .addEventListener("change", function (event) {
-  //     var selectedOption = event.target.value;
-  //     updateChartData(selectedOption, temperatureChart);
-  //     updateChartData(selectedOption, humidityChart);
-  //     updateChartData(selectedOption, co2Chart);
-  //   });
 });

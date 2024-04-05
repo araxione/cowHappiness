@@ -182,6 +182,13 @@ main {
   margin-bottom: 1.4rem;
 }
 
+.insights-container,
+.left,
+.middle,
+.right {
+  border: 1px solid #c8c8c8;
+}
+
 main .insights > div {
   background-color: white;
   padding: var(--card-padding);
